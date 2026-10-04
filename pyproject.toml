@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facerec"
+version = "1.0.0"
+description = "Accurate face recognition with SCRFD detection and ArcFace embeddings"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.21",
+    "opencv-python>=4.5",
+    "onnxruntime>=1.14",
+]
+
+[project.optional-dependencies]
+gpu = ["onnxruntime-gpu>=1.14"]
+dev = ["pytest"]
+
+[project.scripts]
+facerec = "facerec.cli:main"
+
+[tool.setuptools]
+packages = ["facerec"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
